@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --color-background: #F8FAFC; /* slate-50 */
+    --color-foreground: #1F2937; /* gray-800 */
+    --color-border: rgba(148, 163, 184, 0.2); /* slate-400 with opacity */
+    --color-input: #FFFFFF; /* white */
+    --color-ring: #1E3A8A; /* blue-800 */
+    
+    /* Card Colors */
+    --color-card: #FFFFFF; /* white */
+    --color-card-foreground: #1F2937; /* gray-800 */
+    
+    /* Popover Colors */
+    --color-popover: #FFFFFF; /* white */
+    --color-popover-foreground: #1F2937; /* gray-800 */
+    
+    /* Muted Colors */
+    --color-muted: #F1F5F9; /* slate-100 */
+    --color-muted-foreground: #6B7280; /* gray-500 */
+    
+    /* Primary Colors */
+    --color-primary: #1E3A8A; /* blue-800 */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    /* Secondary Colors */
+    --color-secondary: #475569; /* slate-600 */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #F59E0B; /* amber-500 */
+    --color-accent-foreground: #1F2937; /* gray-800 */
+    
+    /* Success Colors */
+    --color-success: #059669; /* emerald-600 */
+    --color-success-foreground: #FFFFFF; /* white */
+    
+    /* Warning Colors */
+    --color-warning: #D97706; /* amber-600 */
+    --color-warning-foreground: #FFFFFF; /* white */
+    
+    /* Error/Destructive Colors */
+    --color-error: #DC2626; /* red-600 */
+    --color-error-foreground: #FFFFFF; /* white */
+    --color-destructive: #DC2626; /* red-600 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+::-webkit-scrollbar-thumb:hover  {
+    
+  }
+}
+
+@layer components {
+  /* Glass morphism utility */
+  .glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  /* Industrial shadow system */
+  .shadow-card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .shadow-modal {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 200ms ease-out;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 300ms ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
